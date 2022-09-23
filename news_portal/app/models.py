@@ -1,4 +1,3 @@
-# import django.contrib.auth.backends
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -13,6 +12,9 @@ class Author(models.Model):
 
 class Category(models.Model):
     category = models.TextField(unique=True)
+
+    def __str__(self):
+        return f'{self.category}'
 
 
 article = 'AR'
@@ -43,6 +45,9 @@ class Post(models.Model):
 
     def preview(self):
         return self.body[:128] + print('...')
+
+    def __str__(self):
+        return f'{self.header}: {self.body[:20]}'
 
 
 class PostCategory(models.Model):
